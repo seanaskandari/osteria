@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {title} from "../styles/title";
+import {Title} from "../Styles/Title";
 
 export const FoodGrid = styled.div`
 display: grid;
@@ -12,7 +12,7 @@ background-color: rgba(255, 255, 255, .5);
 padding: 5px;
 `
 
-export const Food = styled.div`
+export const Food = styled(Title)`
 height: 100px;
 padding: 10px;
 font-size: 20px;
@@ -24,6 +24,6 @@ border-radius: 7px;
 box-shadow: 0px 0px 10px 0px grey;
 &: hover {
     cursor: pointer;
-    opacity: .7;
+    opacity: 0.7;
 }
 `

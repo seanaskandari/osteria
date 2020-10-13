@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { cream } from "../styles/colors";
-import { Title } from "../styles/title";
+import { cream } from "../Styles/colors";
+import { Title } from "../Styles/Title";
 
 const NavbarStyled = styled.div`
     background-color: ${cream};
