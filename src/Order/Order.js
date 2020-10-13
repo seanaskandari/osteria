@@ -42,7 +42,7 @@ export function Order({orders}) {
             ) : (   
             <OrderContent>
                 {" "}
-                <OrderContainer>Your Order:</OrderContainer>
+                <OrderContainer>Your Order:</OrderContainer>{" "}
                 {orders.map(order => (
                     <OrderContainer>
                         <OrderItem>
