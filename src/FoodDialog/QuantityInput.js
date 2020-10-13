@@ -24,8 +24,7 @@ text-align: center;
 cursor: pointer;
 padding: -12px;
 line-height: 23px;
-margin: 0px 101px;
-border: 1px solid #f44336;
+margin: 0px 10px;
 border: 1px solid ${cream};
 ${({ disabled }) => 
 disabled &&
@@ -38,8 +37,18 @@ disabled &&
 `;
 
 export function QuantityInput({ quantity }){
-    return <IncrementContainer>
-    <div> Quantity </div>
+    return (
+    <IncrementContainer>
+    <div> Quantity: </div>
+    <IncrementButton 
+        onClick= {() => {
+        quantity.setValue(quantity.value - 1);
+    }}
+    disabled={quantity.value === 1}> -  </IncrementButton>
     <QuantityInputStyled {...quantity} />
+    <IncrementButton onClick={() => {
+        quantity.setValue(quantity.value + 1);
+    }}> +  </IncrementButton>
     </IncrementContainer>
+    );
 };
