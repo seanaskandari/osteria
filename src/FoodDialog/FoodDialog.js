@@ -6,7 +6,7 @@ import {Title} from "../Styles/Title"
 
 const Dialog = styled.div`
 width: 500px;
-background-color: white:
+background-color: white;
 position: fixed;
 top: 75px;
 z-index: 5;
@@ -78,7 +78,7 @@ export function FoodDialog({ openFood, setOpenFood, setOrders, orders }) {
         setOrders([...orders, order]);
         close();
     }
-    
+
     return (
     <>
     <DialogShadow onClick={close} />
