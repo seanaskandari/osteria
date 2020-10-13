@@ -37,7 +37,7 @@ export function Order({orders}) {
     return (
         <OrderStyled>
             {orders.length === 0 ? (
-            <OrderContent>Your order is looking pretty empty.</OrderContent>
+            <OrderContent>Your order is empty.</OrderContent>
             ) : (   
             <OrderContent>
                 {" "}
