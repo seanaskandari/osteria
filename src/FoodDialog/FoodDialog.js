@@ -1,16 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
 import {FoodLabel} from "../Menu/FoodGrid";
+import {cream} from "../Styles/colors"
+import {Title} from "../Styles/Title"
 
 const Dialog = styled.div`
 width: 500px;
-height: 500px;
 background-color: white:
 position: fixed;
 top: 75px;
 z-index: 5;
 max-height: calc(100% - 100px);
 left: calc(50% - 250px);
+display: flex;
+flex-direction: column;
+`;
+
+const DialogContent = styled.div`
+overflow: auto;
+min-height: 100px;
+`;
+const DialogFooter = styled.div`
+box-shadow: 0px -2px 10px 0px grey;
+height: 60px;
+`;
+
+const ConfirmButton = styled(Title)`
+margin: 10px;
+color: white;
+height: 20px;
+border-radius: 5px;
+padding: 10px;
+text-align: center;
+width: 200px;
+cursor: pointer;
+background-color: ${cream};
 `;
 
 const DialogShadow = styled.div`
@@ -37,7 +61,7 @@ font-size: 30px;
 padding: 5px 40px;
 `;
 
-export function FoodDialog({openFood, setOpenFood }) {
+export function FoodDialog({ openFood, setOpenFood }) {
     function close() {
         setOpenFood();
     }
@@ -49,7 +73,14 @@ export function FoodDialog({openFood, setOpenFood }) {
         <DialogBanner img={openFood.img}>
         <DialogBannerName> {openFood.name} </DialogBannerName>
         </DialogBanner>
+        <DialogContent>
+
+        </DialogContent>
+        <DialogFooter>
+            <ConfirmButton>Confirm Button</ConfirmButton>
+        </DialogFooter>
     </Dialog>
+    
     </>
     );
 }
