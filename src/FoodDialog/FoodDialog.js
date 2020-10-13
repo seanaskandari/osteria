@@ -16,18 +16,21 @@ display: flex;
 flex-direction: column;
 `;
 
-const DialogContent = styled.div`
+export const DialogContent = styled.div`
 overflow: auto;
 min-height: 100px;
 `;
-const DialogFooter = styled.div`
+
+export const DialogFooter = styled.div`
 box-shadow: 0px -2px 10px 0px grey;
 height: 60px;
+display: flex;
+justify-content: center;
 `;
 
-const ConfirmButton = styled(Title)`
+export const ConfirmButton = styled(Title)`
 margin: 10px;
-color: white;
+color: black;
 height: 20px;
 border-radius: 5px;
 padding: 10px;
@@ -73,14 +76,12 @@ export function FoodDialog({ openFood, setOpenFood }) {
         <DialogBanner img={openFood.img}>
         <DialogBannerName> {openFood.name} </DialogBannerName>
         </DialogBanner>
-        <DialogContent>
-
-        </DialogContent>
+        <DialogContent />
         <DialogFooter>
-            <ConfirmButton>Confirm Button</ConfirmButton>
+            <ConfirmButton>Add to Cart</ConfirmButton>
         </DialogFooter>
     </Dialog>
     
-    </>
+    </ >
     );
 }

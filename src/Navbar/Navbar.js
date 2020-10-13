@@ -13,7 +13,7 @@ const NavbarStyled = styled.div`
 const Logo = styled(Title)`
     font-size: 20px;
     color: black;
-    text-shadow: 1px 1px 3px black;
+    text-shadow: 1px 1px 3px grey;
 `
 
 export function Navbar(){

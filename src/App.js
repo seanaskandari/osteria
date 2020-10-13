@@ -13,8 +13,8 @@ function App() {
   return (
   <>
     <GlobalStyle />
-    <FoodDialog openFood={openFood} setOpenFood={setOpenFood} />
     <Navbar />
+    <FoodDialog openFood={openFood} setOpenFood={setOpenFood} />
     <Order />
     <Banner />
     <Menu setOpenFood={setOpenFood} />
