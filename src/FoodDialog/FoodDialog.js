@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import {FoodLabel} from "../Menu/FoodGrid";
-import {cream} from "../Styles/colors"
-import {Title} from "../Styles/Title"
+import {cream} from "../Styles/colors";
+import {Title} from "../Styles/Title";
+import {formatPrice} from "../Data/FoodData";
 
 const Dialog = styled.div`
 width: 500px;
@@ -71,7 +72,7 @@ export function FoodDialog({ openFood, setOpenFood, setOrders, orders }) {
     if (!openFood) return null;
 
     const order = {
-        name: openFood.name
+        ...openFood
     };
 
     function addToOrder(){
@@ -88,7 +89,9 @@ export function FoodDialog({ openFood, setOpenFood, setOrders, orders }) {
         </DialogBanner>
         <DialogContent />
         <DialogFooter>
-            <ConfirmButton onClick={addToOrder}>Add to Cart</ConfirmButton>
+            <ConfirmButton onClick={addToOrder}>
+                Add to Cart: {formatPrice(openFood.price)}
+                </ConfirmButton>
         </DialogFooter>
     </Dialog>
     
