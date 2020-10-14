@@ -6,6 +6,8 @@ import {Title} from "../Styles/Title";
 import {formatPrice} from "../Data/FoodData";
 import { QuantityInput } from "./QuantityInput";
 import { useQuantity } from "../Hooks/useQuantity";
+import { Modifications } from "./Modifications";
+import { useModifications } from "../Hooks/useModifications";
 
 const Dialog = styled.div`
 width: 500px;
@@ -23,6 +25,7 @@ export const DialogContent = styled.div`
 overflow: auto;
 min-height: 100px;
 padding: 0px 40px;
+padding-bottom: 80px;
 `;
 
 export const DialogFooter = styled.div`
@@ -69,18 +72,26 @@ padding: 5px 40px;
 `;
 
 export function getPrice(order){
-    return order.quantity * order.price;
+    return order.quantity * (order.price + order.modifications.filter(t => t.checked).length);
 }
+
+function hasModifications(food){
+    return food.section === 'Pasta';
+}
+
 
 function FoodDialogContainer({ openFood, setOpenFood, setOrders, orders }) {
     const quantity = useQuantity(openFood && openFood.quantity);
+    const modifications = useModifications(openFood.modifications);
+
     function close() {
         setOpenFood();
     }
 
     const order = {
         ...openFood,
-        quantity: quantity.value
+        quantity: quantity.value,
+        modifications: modifications.modifications
     };
 
     function addToOrder(){
@@ -97,6 +108,10 @@ function FoodDialogContainer({ openFood, setOpenFood, setOrders, orders }) {
         </DialogBanner>
         <DialogContent>
             <QuantityInput quantity = {quantity}/>
+            {hasModifications(openFood) && <>
+            <h3>Select Any Requests</h3>
+            <Modifications {...modifications}/>
+            </>}
         </DialogContent>
         <DialogFooter>
             <ConfirmButton onClick={addToOrder}>
