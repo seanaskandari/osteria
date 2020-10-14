@@ -89,6 +89,9 @@ function hasModifications(food){
 function FoodDialogContainer({ openFood, setOpenFood, setOrders, orders }) {
     const quantity = useQuantity(openFood && openFood.quantity);
     const modifications = useModifications(openFood.modifications);
+    const isEditing = openFood.index > -1;
+
+    
 
     function close() {
         setOpenFood();
@@ -99,6 +102,13 @@ function FoodDialogContainer({ openFood, setOpenFood, setOrders, orders }) {
         quantity: quantity.value,
         modifications: modifications.modifications
     };
+
+    function editOrder() {
+        const newOrders = [...orders];
+        newOrders[openFood.index] = order;
+        setOrders(newOrders);
+        close();
+    }
 
     function addToOrder(){
         setOrders([...orders, order]);
@@ -120,8 +130,10 @@ function FoodDialogContainer({ openFood, setOpenFood, setOrders, orders }) {
             </>}
         </DialogContent>
         <DialogFooter>
-            <ConfirmButton onClick={addToOrder}>
-                Add to Cart: {formatPrice(getPrice(order))}
+            <ConfirmButton 
+                onClick={isEditing ? editOrder : addToOrder}>
+                {isEditing ? 'Update Order' : 'Add to Cart:'} 
+                {formatPrice(getPrice(order))}
                 </ConfirmButton>
         </DialogFooter>
     </Dialog>
