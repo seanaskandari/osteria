@@ -71,8 +71,14 @@ font-size: 30px;
 padding: 5px 40px;
 `;
 
+const pricePerModification = 1.00;
+
 export function getPrice(order){
-    return order.quantity * (order.price + order.modifications.filter(t => t.checked).length);
+    return (
+        order.quantity * 
+        (order.price + 
+            order.modifications.filter(t => t.checked).length * pricePerModification)
+    );
 }
 
 function hasModifications(food){

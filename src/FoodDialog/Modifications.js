@@ -14,7 +14,7 @@ const CheckboxLabel = styled.label`
 cursor: pointer;
 `
 
-export function Modifications({modifications, checkModifications }) {
+export function Modifications({modifications, checkModification }) {
     return (
     <ModificationGrid>
         {modifications.map((modifications, i) => (
@@ -23,7 +23,7 @@ export function Modifications({modifications, checkModifications }) {
             type="checkbox"
             checked={modifications.checked}
             onClick={() => {
-                checkModifications(i);
+                checkModification(i);
             }}
             />
             {modifications.name}
