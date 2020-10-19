@@ -47,7 +47,7 @@ color: grey;
 font-size: 10px;
 `
 
-export function Order({orders, setOrders, setOpenFood }) {
+export function Order({orders, setOrders, setOpenFood, setOpenOrderDialog }) {
     const subTotal = orders.reduce((total, order) => {
         return total + getPrice(order);
     }, 0);
@@ -117,7 +117,9 @@ export function Order({orders, setOrders, setOpenFood }) {
                 </OrderContent>
             )}
             <DialogFooter>
-                <ConfirmButton>Checkout</ConfirmButton>
+                <ConfirmButton
+                    
+                >Checkout</ConfirmButton>
             </DialogFooter>
         </OrderStyled>
     );

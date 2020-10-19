@@ -14,6 +14,7 @@ export function useModifications(defaultModifications){
         modifications
     }
 }
+// List of items the user can select for pasta modifications
 
 const modificationsList = [
     "Add Shrimp",
@@ -27,6 +28,7 @@ const modificationsList = [
     "No Meat",
 ];
 
+// This function maps out 
 function getDefaultModifications () {
     return modificationsList.map(modification => ({
         name: modification,
