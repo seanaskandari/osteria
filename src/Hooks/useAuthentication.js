@@ -1,5 +1,5 @@
 const auth = window.passport.authenticate();
-const provider = new window.passport.authenticate.provider();
+const provider = new window.passport.authenticate.OAuthprovider();
 
 export function useAuthentication() {
     function login(){

@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:3000/osteria", 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:3000/Osteria", 
 { 
     useNewUrlParser: true,
     useUnifiedTopology: true,
