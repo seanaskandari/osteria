@@ -18,19 +18,19 @@ const Logo = styled(Title)`
 const UserStatus = styled.div`
     color: black;
     font-size: 12px;
-    margin-right: 30px;
+    margin-right: 10px;
 `
 const LoginButton = styled.span`
     cursor: pointer;
 `
 
-export function Navbar(){
+export function Navbar({login}){
     return <NavbarStyled>
         <Logo>
             OSTERIA
         </Logo>
         <UserStatus>
-        <LoginButton>Log In/ Sign Up</LoginButton>
+        <LoginButton onClick={login}>Log In/ Sign Up</LoginButton>
         </UserStatus>
     </NavbarStyled>
 }
