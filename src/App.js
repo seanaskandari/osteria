@@ -25,7 +25,7 @@ function App() {
   return (
   <>
     <GlobalStyle />
-    <OrderDialog />
+    <OrderDialog {...orderDialog} {...orders}/>
     <FoodDialog {...openFood} {...orders} />
     <Navbar {...auth}/>
     <Order {...orders} {...openFood} {...auth} {...orderDialog} />
