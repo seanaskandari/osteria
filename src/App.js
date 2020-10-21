@@ -8,12 +8,15 @@ import { Order } from "./Order/Order";
 import { useOpenFood } from "./Hooks/useOpenFood";
 import { useOrders } from "./Hooks/useOrders";
 import { useTitle } from "./Hooks/useTitle";
+import { useAuthentication } from "./Hooks/useAuthentication";
 import { OrderDialog } from "./Order/OrderDialog";
 import { useOrderDialog } from "./Hooks/useOrderDialog";
+
 
 function App() {
   const openFood = useOpenFood();
   const orders = useOrders();
+  const auth = useAuthentication();
   const orderDialog = useOrderDialog();
 
   useTitle({...openFood, ...orders})
@@ -24,8 +27,8 @@ function App() {
     <GlobalStyle />
     <OrderDialog />
     <FoodDialog {...openFood} {...orders} />
-    <Navbar />
-    <Order {...orders} {...openFood} {...orderDialog}/>
+    <Navbar {...auth}/>
+    <Order {...orders} {...openFood} {...auth} {...orderDialog} />
     <Banner />
     <Menu {...openFood} />
   </>

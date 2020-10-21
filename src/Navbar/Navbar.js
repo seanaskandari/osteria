@@ -9,6 +9,8 @@ const NavbarStyled = styled.div`
     position: fixed;
     width: 100%;
     z-index: 999;
+    display: flex;
+    justify-content: space-between;
 `
 const Logo = styled(Title)`
     font-size: 20px;
@@ -18,19 +20,32 @@ const Logo = styled(Title)`
 const UserStatus = styled.div`
     color: black;
     font-size: 12px;
-    margin-right: 10px;
+    margin-right: 30px;
 `
 const LoginButton = styled.span`
     cursor: pointer;
 `
 
-export function Navbar({login}){
-    return <NavbarStyled>
+export function Navbar({login, loggedIn, logout}){
+    return (
+    <NavbarStyled>
         <Logo>
             OSTERIA
         </Logo>
         <UserStatus>
-        <LoginButton onClick={login}>Log In/ Sign Up</LoginButton>
+            {loggedIn !== "loading" ? (
+                <>
+                {loggedIn ? "Logged in." : ""}
+                {loggedIn ? (
+                    <LoginButton onClick={logout}>Log Out</LoginButton>
+                ) : (
+                    <LoginButton onClick={login}>Log In/ Sign Up </ LoginButton>
+                )}
+                </>
+            ) : (
+                "loading..."
+            )}
         </UserStatus>
     </NavbarStyled>
+    );
 }

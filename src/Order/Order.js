@@ -47,7 +47,7 @@ color: grey;
 font-size: 10px;
 `
 
-export function Order({orders, setOrders, setOpenFood, setOpenOrderDialog }) {
+export function Order({orders, setOrders, setOpenFood, login, loggedIn, setOpenOrderDialog }) {
     const subTotal = orders.reduce((total, order) => {
         return total + getPrice(order);
     }, 0);
@@ -84,7 +84,7 @@ export function Order({orders, setOrders, setOpenFood, setOpenOrderDialog }) {
                                 deleteItem(index);
                             }}
                             > 
-                            <span> 🗑️ </span>
+                            <span role="img" aria-label="trash can"> 🗑️ </span>
                             </div> 
                             <div>{formatPrice(getPrice(order))}</div>
                         </OrderItem>
@@ -117,9 +117,14 @@ export function Order({orders, setOrders, setOpenFood, setOpenOrderDialog }) {
                 </OrderContent>
             )}
             <DialogFooter>
-                <ConfirmButton
-                    
-                >Checkout</ConfirmButton>
+                <ConfirmButton onClick={() => {
+                    if (loggedIn) {
+                        console.log('logged in');
+                    } else {
+                        login();
+                    }
+
+                }}>Checkout</ConfirmButton>
             </DialogFooter>
         </OrderStyled>
     );
