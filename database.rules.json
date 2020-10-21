@@ -1,5 +1,5 @@
 {
- 
+  
   "rules": {
     "orders": {
     ".write": true

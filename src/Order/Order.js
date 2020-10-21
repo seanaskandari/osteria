@@ -4,6 +4,8 @@ import { DialogContent, DialogFooter, ConfirmButton} from "../FoodDialog/FoodDia
 import { formatPrice } from "../Data/FoodData";
 import { getPrice } from "../FoodDialog/FoodDialog";
 
+const database = window.firebase.database();
+
 const OrderStyled = styled.div`
     position: fixed;
     right: 0px;
@@ -46,6 +48,35 @@ const DetailItem = styled.div`
 color: grey;
 font-size: 10px;
 `
+function sendOrder(orders, {email, displayName}){
+    const newOrderRef = database.ref('orders').push();
+    const newOrders = orders.map(order => {
+        return Object.keys(order).reduce((acc, orderKey) => {
+            if (!order[orderKey]) {
+                // undefined value
+                return acc;
+            }
+            if (orderKey === "modifications") {
+                return {
+                    ...acc,
+                    [orderKey]: order[orderKey]
+                    .filter(({ checked }) => checked)
+                    .map(({ name }) => name)
+                };
+            }
+            return {
+                ...acc,
+                [orderKey]: order[orderKey]
+            };
+        }, {});
+    });
+    newOrderRef.set({
+        order: newOrders,
+        email,
+        displayName
+    });
+}
+
 
 export function Order({orders, setOrders, setOpenFood, login, loggedIn, setOpenOrderDialog }) {
     const subTotal = orders.reduce((total, order) => {
@@ -119,7 +150,7 @@ export function Order({orders, setOrders, setOpenFood, login, loggedIn, setOpenO
             <DialogFooter>
                 <ConfirmButton onClick={() => {
                     if (loggedIn) {
-                        console.log('logged in');
+                        sendOrder(orders, loggedIn);
                     } else {
                         login();
                     }
