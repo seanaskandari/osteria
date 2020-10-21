@@ -6,7 +6,7 @@ export function OrderDialog({openOrderDialog, setOpenOrderDialog, setOrders}){
         <DialogShadow/>
         <Dialog>
             <DialogContent>
-                <h2>🚚  Your order is on the way!</h2>
+                <h2> Your order is on the way!</h2>
                 <p> Thank you for choosing Osteria! We appreciate your business!</p>
             </DialogContent>
             <DialogFooter>
