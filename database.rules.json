@@ -1,8 +1,6 @@
 {
-  
   "rules": {
-    "orders": {
-    ".write": true
-    }
+    ".read": "auth != null",
+    ".write": "auth != null"
   }
 }

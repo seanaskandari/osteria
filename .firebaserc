@@ -2,4 +2,13 @@
   "projects": {
     "default": "osteria-7b5e2"
   }
+  "targets": {
+    "osteria-7b5e2": {
+      "hosting": {
+        "osteria": [
+          "osteria-7b5e2"
+        ]
+      }
+    }
+  }
 }
