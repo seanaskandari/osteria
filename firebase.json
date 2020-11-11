@@ -3,7 +3,7 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "target": "osteria",
+    "site": "osteria-7b5e2",
     "public": "build",
     "ignore": [
       "firebase.json",
